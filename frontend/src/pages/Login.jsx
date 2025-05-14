@@ -1,11 +1,23 @@
 import React from "react";
 import { FaFacebookF, FaGoogle, FaTwitter, FaGithub } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 
 function Login() {
+  const navigate = useNavigate();
+
+    const handleLogin = (e) => {
+    e.preventDefault();
+    // Assume login succeeds
+    localStorage.setItem("token", "your-auth-token");
+    navigate("/"); // Redirect to dashboard
+  };
+
   return (
+
     <div className="container mt-5" style={{ maxWidth: "500px" }}>
       <h2 className="text-center mb-4">Login</h2>
-      <form>
+      <form onSubmit={handleLogin}>
            <div className="mb-3">
           <label htmlFor="name" className="form-label">UserName</label>
           <input type="name" className="form-control" id="name" required />
